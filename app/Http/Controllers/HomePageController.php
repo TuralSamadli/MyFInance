@@ -23,4 +23,7 @@ class HomePageController extends Controller
         $blog=Blog::where('is_deleted',0)->get();
         return view('homepage',compact('slider','about','portfolio','service','blog'));
     }
+    public function test(){
+        return view('admin.homepage');
+    }
 }

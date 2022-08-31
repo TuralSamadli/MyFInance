@@ -16,3 +16,4 @@ use App\Http\Controllers\MessagesController;
 */
 
 Route::get('/',[HomePageController::class, 'index'])->name('home');
+Route::get('/control',[HomePageController::class, 'test']);
