@@ -23,7 +23,7 @@
                                 <div class="carousel-caption relative">
                                     <h1>{{ $slider->title }}</h1>
                                     <p>{{ $slider->description }}</p>
-                                    <a href="Javascript:void(0)">Read More</a>
+                                   
                                 </div>
                         </div>
                         @endforeach
@@ -71,50 +71,11 @@
                         </div>
 
                     </div>
-                </div>
-                <a href="Javascript:void(0)">read more</a>
-            </div>
+              
         </div>
         <!-- end abouts -->
 
-        <!-- Download -->
-        <div id="portfolio" class="Screenshot">
-            <div class="container">
-                @foreach ($portfolio as $portfolio)
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="titlepage">
-                                <h2>{{ $portfolio->title }}</h2>
-                                <span>{{ $portfolio->description }}</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div id="main_slider" class="carousel slide banner-main" data-ride="carousel">
-                                <div class="carousel-inner">
-                                    <div class="carousel-item active"> <img class="first-slide" src="images/banner.png"
-                                            alt="First slide"> </div>
-                                    <div class="carousel-item"> <img class="second-slide" src="images/banner.png"
-                                            alt="Second slide"> </div>
-                                    <div class="carousel-item"> <img class="third-slide" src="images/banner.png"
-                                            alt="Third slide"> </div>
-                                </div>
-                                <a class="carousel-control-prev" href="#main_slider" role="button" data-slide="prev"> <i
-                                        class='fa fa-angle-left'></i></a> <a class="carousel-control-next"
-                                    href="#main_slider" role="button" data-slide="next"> <i
-                                        class='fa fa-angle-right'></i></a>
-                            </div>
-                            <div class="read-more">
-                                <a href="Javascript:void(0)">download now</a>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-
-            </div>
-        </div>
-        <!-- end Download -->
+        
 
         <!-- service -->
         <div id="service" class="service">
@@ -123,9 +84,8 @@
                     <div class="col-md-12">
                         <div class="titlepage">
                             <h2>Services </h2>
-                            <span>It is a long established fact that a reader will be distracted by the readable content of
-                                a page when looking at its layout. The point of <br>using Lorem Ipsum is that it has a
-                                more-or-less normal distribution of letters,</span>
+                            <span>https://www.investopedia.com › ... › Corporate Finance
+                                Finance is a term for matters regarding the management, creation, and study of money and investments. It involves the use of credit and debt, securities,</span>
                         </div>
                     </div>
                 </div>
@@ -160,18 +120,20 @@
         <!-- our blog -->
         <div id="blog" class="blog">
             <div class="container">
-               @foreach ($blog as $blog)
 
                 <div class="row">
                     <div class="col-md-12">
                         <div class="titlepage">
                                
-                            <h2>{{$blog->title}}</h2>
-                            <span>{{$blog->description}}</span>
+                            <h2>Our blog</h2>
+                            <span>Get daily information about latest developments in finance field</span>
                         </div>
                     </div>
                 </div>
+
                 <div class="row">
+                    @foreach ($blog as $blog)
+
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                         <div class="blog-box">
                             <figure><img src="images/blog-image0.jpg" alt="#" />
@@ -183,16 +145,19 @@
                             </div>
                             <h3>{{$blog->blog_title}}</h3>
                             <p>{{$blog->blog_description}}</p>
-                        </div>
-                    </div>
+                            
 
+                        </div>
+                        
+                    </div>
+                    @endforeach
 
                 </div>
-                @endforeach
             </div>
         </div>
         <!-- end our blog -->
         <!-- Testimonial -->
+
         <div id="contact" class="contact">
             <div class="container">
                 <div class="row">
@@ -207,7 +172,8 @@
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 offset-md-3">
                         <div class="contact">
 
-                            <form>
+                            <form method="POST" action="{{route('message')}}">
+                            @csrf
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <input class="contactus" placeholder="Name" type="text" name="Name">
