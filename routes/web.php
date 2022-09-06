@@ -28,7 +28,7 @@ Route::prefix('control')->group(function () {
 
 Route::get('/login', [LoginController::class, 'index'])->name('login.index');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('login.post');
-// Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth'])->group(function () {
 
 Route::get('/',[DashboardController::class, 'index']);
 Route::get('/about',[AboutController::class,'edit'])->name('about.edit');
@@ -45,4 +45,4 @@ Route::get('/message',[MailController::class,'index'])->name('message.index');
 Route::post('/message/deleted',[MailController::class,'delete'])->name('message.delete');
 Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
 });
-// });
+});
