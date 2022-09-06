@@ -14,15 +14,18 @@ class BlogController extends Controller
                 return view('admin.blog.index',compact('blogs'));
             }
     public function edit(){
-        return view('admin.blog.edit');
+        $blogs=Blog::where('id',1)->get();
+
+        return view('admin.blog.edit',compact('blogs'));
     }
     public function update(Request $request)
     {
-        $contact = Blog::where('id',1)->update([
+        $contact = Blog::where('id',$request->id)->update([
             'blog_title'      => $request->blog_title,
             'blog_description'   => $request->blog_description,
             'blog_poster'   => $request->blog_poster,
             'date'   => $request->date,
+            'icon'=> $request->icon
             
 
         ]);
@@ -30,4 +33,9 @@ class BlogController extends Controller
              return redirect()-> back()->with('success','Information was edited!!!');
         
 }
+            public function delete(Request $request){
+                $blogs=Blog::where('id',$request->id)->update([
+                    'is_deleted' =>1
+                ]);
+            }
 }
