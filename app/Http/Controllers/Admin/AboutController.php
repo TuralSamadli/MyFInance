@@ -15,12 +15,12 @@ class AboutController extends Controller
     }
     public function update(Request $request)
     {
-        $contact = About::where('id',1)->update([
+        $contact = About::where('id',$request->id)->update([
             'title'      => $request->title,
             'description'   => $request->description,
             'head'   => $request->head,
             'text'   => $request->text,
-            
+            'icon' => $request->icon,
 
         ]);
         

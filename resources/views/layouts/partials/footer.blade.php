@@ -4,31 +4,28 @@
           <div class="row">
              <div class="col-lg-2 col-md-6 col-sm-12 width">
                 <div class="address">
-                   <h3>Address</h3>
-                   <i><img src="icon/3.png">Locations</i>
-                </div>
+                   <h3>Facebook</h3>
+                   <li> <a href="{{$media->facebook}}"><img   src="icon/fb.png" alt="icon"/></a></li>
+                  </div>
              </div>
              <div class="col-lg-2 col-md-6 col-sm-12 width">
                 <div class="address">
-                   <h3>Menus</h3>
-                   <i><img src="icon/2.png">Locations</i>
-                </div>
+                   <h3>Twitter</h3>
+                   <li><a href="{{$media->twitter}}"><img src="icon/tw.png" alt="icon"/></a></li>
+                  </div>
              </div>
              <div class="col-lg-2 col-md-6 col-sm-12 width">
                 <div class="address">
-                   <h3>Useful Linkes</h3>
-                   <i><img src="icon/1.png">Locations</i>
-                </div>
+                   <h3>Linkedin</h3>
+                   <li> <a href="{{$media->linkedin}}"><img src="icon/lin(2).png" alt="icon"/></a></li>
+                  </div>
              </div>
              <div class="col-lg-2 col-md-6 col-sm-12 width">
                 <div class="address">
-                   <h3>Social Media </h3>
-                   <ul class="contant_icon">
-                      <li><img src="icon/fb.png" alt="icon"/></li>
-                      <li><img src="icon/tw.png" alt="icon"/></li>
-                      <li><img src="icon/lin(2).png" alt="icon"/></li>
-                      <li><img src="icon/instagram.png" alt="icon"/></li>
-                   </ul>
+                   <h3>Instagram </h3>
+                   
+                      <li> <a href="{{$media->instagram}}"><img src="icon/instagram.png" alt="icon"/></a></li>
+                   
                 </div>
              </div>
             

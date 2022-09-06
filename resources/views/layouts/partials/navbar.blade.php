@@ -20,7 +20,10 @@
                          <li> <a href="#service"> Service</a> </li>
                          <li> <a href="#blog">Blog</a> </li>
                          <li> <a href="#contact">Contact us</a> </li>
-                         <li class="mean-last"> <a href="#"><img src="images/search_icon.png" alt="#" /></a> </li>
+                         <form class="example" action="{{route('search')}}">
+                           <input type="text" placeholder="Search.." name="search_data">
+                           <button type="submit"><i class="fa fa-search"></i></button>
+                         </form>
                       </ul>
                    </nav>
                 </div>

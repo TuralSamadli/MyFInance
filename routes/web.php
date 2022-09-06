@@ -8,6 +8,8 @@ use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\MailController;
+use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\Admin\LogoutController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,14 +22,27 @@ use App\Http\Controllers\Admin\MailController;
 */
 
 Route::get('/',[HomePageController::class, 'index'])->name('home');
+Route::get('/search',[HomePageController::class, 'search'])->name('search');
 Route::post('/message',[MessagesController::class,'user_messages'])->name('message');
-Route::get('/control',[DashboardController::class, 'index']);
-Route::get('/control/about',[AboutController::class,'edit'])->name('about.edit');
-Route::post('/control/about',[AboutController::class,'update'])->name('about.update');
-Route::get('/control/blog',[BlogController::class,'index'])->name('blog.index');
-Route::get('/control/blog/edit',[BlogController::class,'edit'])->name('blog.edit');
-Route::post('/control/blog/update',[BlogController::class,'update'])->name('blog.update');
-Route::get('/control/service',[ServiceController::class,'index'])->name('service.index');
-Route::get('/control/service/edit',[ServiceController::class,'edit'])->name('service.edit');
-Route::post('/control/service/update',[ServiceController::class,'update'])->name('service.update');
-Route::get('/control/message',[MailController::class,'index'])->name('message.index');
+Route::prefix('control')->group(function () {
+
+Route::get('/login', [LoginController::class, 'index'])->name('login.index');
+Route::post('/login', [LoginController::class, 'authenticate'])->name('login.post');
+// Route::middleware(['auth'])->group(function () {
+
+Route::get('/',[DashboardController::class, 'index']);
+Route::get('/about',[AboutController::class,'edit'])->name('about.edit');
+Route::post('/about',[AboutController::class,'update'])->name('about.update');
+Route::get('/blog',[BlogController::class,'index'])->name('blog.index');
+Route::get('/blog/edit',[BlogController::class,'edit'])->name('blog.edit');
+Route::post('/blog/update',[BlogController::class,'update'])->name('blog.update');
+Route::post('/blog/delete',[BlogController::class,'delete'])->name('blog.delete');
+Route::get('/service',[ServiceController::class,'index'])->name('service.index');
+Route::get('/service/edit',[ServiceController::class,'edit'])->name('service.edit');
+Route::post('/service/update',[ServiceController::class,'update'])->name('service.update');
+Route::post('/service/delete',[ServiceController::class,'delete'])->name('service.delete');
+Route::get('/message',[MailController::class,'index'])->name('message.index');
+Route::post('/message/deleted',[MailController::class,'delete'])->name('message.delete');
+Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
+});
+// });

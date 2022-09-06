@@ -43,7 +43,6 @@
         <!-- about  -->
         <div id="about" class="about">
             @foreach ($about as $about)
-            @endforeach
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -66,12 +65,13 @@
                     <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                         <div class="about-img">
 
-                            <figure><img src="images/aboutimg.png" alt="img" /></figure>
+                            <figure><img src="{{$about->icon}}" alt="img" /></figure>
 
                         </div>
 
                     </div>
-              
+                    @endforeach
+
         </div>
         <!-- end abouts -->
 
@@ -98,10 +98,10 @@
                         <div class="service-box">
                             <figure>
                                 <a href="images/1.jpg" class="fancybox" rel="ligthbox">
-                                    <img src="images/1.jpg" class="zoom img-fluid " alt="">
+                                    <img src="{{$service->service_icon}}" class="zoom img-fluid " alt="">
                                 </a>
                                 <span class="hoverle">
-                                    <a href="images/1.jpg" class="fancybox" rel="ligthbox">{{$service->service_name}}</a>
+                                    <a href="{{$service->service_icon}}" class="fancybox" rel="ligthbox">{{$service->service_name}}</a>
                                 </span>
                             </figure>
                         </div>
@@ -136,7 +136,7 @@
 
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                         <div class="blog-box">
-                            <figure><img src="images/blog-image0.jpg" alt="#" />
+                            <figure><img src="{{$blog->icon}}" alt="#" />
                                 <span>{{$blog->date}}</span>
                             </figure>
                             <div class="travel">
@@ -172,26 +172,52 @@
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 offset-md-3">
                         <div class="contact">
 
-                            <form method="POST" action="{{route('message')}}">
-                            @csrf
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <input class="contactus" placeholder="Name" type="text" name="Name">
+                            <form id="contact-form" method="POST" action="{{ route('message') }}">
+                                @csrf
+                                <div class="controls">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <input id="name" type="text" name="name"
+                                                    class="form-control" placeholder="Name*" required="required"
+                                                    data-error="Name is required.">
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <input id="email" type="email" name="email"
+                                                    class="form-control" placeholder="Email*" required="required"
+                                                    data-error="Valid email is required.">
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-sm-12">
-                                        <input class="contactus" placeholder="Phone" type="text" name="Email">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <input id="phone" type="text" name="phone"
+                                                    class="form-control" placeholder="Subject*"
+                                                    required="required" data-error="Subject is required.">
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-sm-12">
-                                        <input class="contactus" placeholder="Email" type="text" name="Email">
-                                    </div>
-                                    <div class="col-sm-12">
-                                        <textarea class="textarea" placeholder="Message" type="text" name="Message"></textarea>
-                                    </div>
-                                    <div class="col-sm-12">
-                                        <button class="send">Send</button>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <textarea id="message" name="message" class="form-control" placeholder="Message*" rows="7"
+                                                    required="required" data-error="Please,leave us a message."></textarea>
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <button type="submit" class="mybtn3 mybtn-bg"><span>Send
+                                                    Message</span></button>
+                                        </div>
                                     </div>
                                 </div>
-                            </form>
+                            </form> <!-- End Contact From -->
                         </div>
                     </div>
                 </div>

@@ -25,6 +25,7 @@ class HomePageController extends Controller
     }
     public function search(Request $request){
         $data=$request->search_data;
-        $blogs=Blog::where('blog_name','like','%'. $data.'%') -> orWhere ('blog_description','like','%'. $data.'%')->get();
-    }
+        $services=Service::where('service_name','like','%'. $data.'%')->get();
+         return view('search', compact('services'));
+        }
 }
